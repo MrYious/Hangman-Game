@@ -1,4 +1,5 @@
 import Home from "./Home";
+import Instruction from "./Instruction";
 import Menu from "./Menu";
 import { createBrowserRouter } from "react-router-dom";
 
@@ -23,6 +24,6 @@ export const router = createBrowserRouter([
     },
     {
         path: "/instructions",
-        element: <></>
+        element: <Instruction />
     }
 ])
