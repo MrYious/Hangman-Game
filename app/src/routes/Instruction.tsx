@@ -42,7 +42,7 @@ export default function Instruction () {
         </section>
         <section className="flex gap-10 p-10 border-2 border-black grow">
             {
-                data.map((data) => <div className="flex flex-col justify-around w-1/4 p-5 text-center bg-gray-200 rounded-xl">
+                data.map((data,i) => <div key={i} className="flex flex-col justify-around w-1/4 p-5 text-center bg-gray-200 rounded-xl">
                     <div className="text-6xl font-bold text-blue-700">
                         {data.number}
                     </div>
