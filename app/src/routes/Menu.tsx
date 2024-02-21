@@ -1,8 +1,10 @@
 import Button from "../components/Button"
 import { Link } from "react-router-dom"
 import back from "../assets/images/icon-back.svg"
+import { useAppSelector } from "../hooks/useReduxHooks"
 
 export default function Menu () {
+    const state = useAppSelector(state => state.settings)
 
     const categories: string[] = ['Movies', 'Countries', 'Animals', 'Foods', 'Sports', 'Technology']
 
@@ -23,15 +25,15 @@ export default function Menu () {
                             Time Limit:
                         </div>
                         <div className="text-blue-700">
-                            NONE
+                            {state.timeLimit === 0 ? 'None' : state.timeLimit}
                         </div>
                     </div>
                     <div className="flex justify-between text-5xl">
                         <div className="text-violet-900">
-                            Lives:
+                            Health:
                         </div>
                         <div className="text-blue-700">
-                            8
+                            {state.health}
                         </div>
                     </div>
                     <div className="flex justify-between text-5xl">
@@ -39,7 +41,7 @@ export default function Menu () {
                             Difficulty:
                         </div>
                         <div className="text-blue-700">
-                            Normal
+                            {state.difficulty}
                         </div>
                     </div>
                 </div>
