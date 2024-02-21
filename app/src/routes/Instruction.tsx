@@ -32,7 +32,7 @@ export default function Instruction () {
     ]
 
     return(<main className="flex flex-col min-h-screen bg-center bg-no-repeat bg-cover bg-bg-desktop">
-        <section className="flex items-center justify-between p-10 border-2 border-black">
+        <section className="flex items-center justify-between p-10 ">
             <Link to={"/"} className="p-5 border-b-2 rounded-full select-none border-violet-700 bg-violet-600 hover:bg-violet-800">
                 <img src={back} alt="back" className="w-[40px]" />
             </Link>
@@ -40,7 +40,7 @@ export default function Instruction () {
                 Instructions
             </h1>
         </section>
-        <section className="flex gap-10 p-10 border-2 border-black grow">
+        <section className="flex gap-10 p-10 grow">
             {
                 data.map((data,i) => <div key={i} className="flex flex-col justify-around w-1/4 p-5 text-center bg-gray-200 rounded-xl">
                     <div className="text-6xl font-bold text-blue-700">
