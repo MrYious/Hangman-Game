@@ -19,26 +19,26 @@ export default function Menu () {
             <div className="flex flex-col items-center justify-center w-1/3 gap-10 p-5">
                 <div className="flex flex-col w-full gap-5 p-5 bg-gray-200 shadow-md rounded-3xl shadow-black">
                     <div className="flex justify-between text-5xl">
-                        <div>
+                        <div className="text-violet-900">
                             Time Limit:
                         </div>
-                        <div>
+                        <div className="text-blue-700">
                             NONE
                         </div>
                     </div>
                     <div className="flex justify-between text-5xl">
-                        <div>
+                        <div className="text-violet-900">
                             Lives:
                         </div>
-                        <div>
+                        <div className="text-blue-700">
                             8
                         </div>
                     </div>
                     <div className="flex justify-between text-5xl">
-                        <div>
+                        <div className="text-violet-900">
                             Difficulty:
                         </div>
-                        <div>
+                        <div className="text-blue-700">
                             Normal
                         </div>
                     </div>
