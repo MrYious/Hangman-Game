@@ -7,12 +7,12 @@ export const router = createBrowserRouter([
         element: <Home />,
     },
     {
-        path: "/select",
+        path: "/menu",
         children: [
             {
                 index: true,
                 path: '',
-                element: <>Select</>
+                element: <>Menu</>
             },
             {
                 path: 'settings',

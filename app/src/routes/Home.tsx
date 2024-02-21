@@ -13,7 +13,7 @@ export default function Home () {
                     alt="logo"
                     className='absolute -top-20'
                 />
-                <Link to={'select'} replace className='p-10 border-b-4 border-black rounded-full select-none bg-violet-600 hover:bg-violet-800'>
+                <Link to={'menu'} replace className='p-10 border-b-4 border-black rounded-full select-none bg-violet-600 hover:bg-violet-800'>
                     <img src={play} alt="play" className='w-[120px]' />
                 </Link>
                 <Button
