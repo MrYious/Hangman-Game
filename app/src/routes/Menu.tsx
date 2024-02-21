@@ -4,9 +4,8 @@ import back from "../assets/images/icon-back.svg"
 import { useAppSelector } from "../hooks/useReduxHooks"
 
 export default function Menu () {
-    const state = useAppSelector(state => state.settings)
-
     const categories: string[] = ['Movies', 'Countries', 'Animals', 'Foods', 'Sports', 'Technology']
+    const state = useAppSelector(state => state.settings)
 
     return(<main className="flex flex-col min-h-screen bg-center bg-no-repeat bg-cover bg-bg-desktop">
         <section className="flex items-center justify-between p-10">
