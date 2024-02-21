@@ -52,8 +52,8 @@ export default function Menu () {
             </div>
             <div className="grid w-2/3 grid-cols-3 gap-5 p-5 ">
                 {
-                    categories.map((category) =>
-                    <button className="text-6xl tracking-wide text-white bg-blue-700 border-t-2 border-b-8 border-blue-950 border-x-2 hover:border-blue-200 rounded-2xl hover:bg-blue-800">
+                    categories.map((category, i) =>
+                    <button key={i} className="text-6xl tracking-wide text-white bg-blue-700 border-t-2 border-b-8 border-blue-950 border-x-2 hover:border-blue-200 rounded-2xl hover:bg-blue-800">
                         {category}
                     </button>)
                 }
