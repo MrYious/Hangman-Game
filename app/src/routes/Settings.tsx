@@ -1,14 +1,16 @@
 import { FaMinus, FaPlus } from "react-icons/fa6";
-import { useAppDispatch, useAppSelector } from "../hooks/useReduxHooks"
 
 import { Link } from "react-router-dom"
 import back from "../assets/images/icon-back.svg"
-import { incTimeLimit } from "../slicers/settingsSlicer"
+import { useAppSelector } from "../hooks/useReduxHooks"
 import { useState } from "react"
+
+// import { incTimeLimit } from "../slicers/settingsSlicer"
+
 
 export default function Settings () {
 
-    const dispatch = useAppDispatch()
+    // const dispatch = useAppDispatch()
     const state = useAppSelector(state => state.settings)
 
     const [changes, setChanges] = useState({
