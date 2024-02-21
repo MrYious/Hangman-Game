@@ -8,6 +8,9 @@ export default {
         'bg-mobile': "url('/background-mobile.svg')"
       }
     },
+    fontFamily: {
+      sans: ['Mouse Memoirs', 'sans-serif']
+    }
   },
   plugins: [],
 }
