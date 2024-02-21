@@ -1,8 +1,9 @@
 import { configureStore } from "@reduxjs/toolkit";
+import settingsSlicer from "./slicers/settingsSlicer";
 
 export const store = configureStore({
     reducer: {
-        
+        settings: settingsSlicer
     }
 })
 
