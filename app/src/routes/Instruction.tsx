@@ -36,7 +36,7 @@ export default function Instruction () {
             <Link to={"/"} className="p-5 border-b-2 rounded-full select-none border-violet-700 bg-violet-600 hover:bg-violet-800">
                 <img src={back} alt="back" className="w-[40px]" />
             </Link>
-            <h1 className="text-blue-200 text-9xl">
+            <h1 className="text-blue-200 select-none text-9xl">
                 Instructions
             </h1>
         </section>
