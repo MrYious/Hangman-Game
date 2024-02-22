@@ -29,7 +29,7 @@ export const router = createBrowserRouter([
         element: <Instruction />
     },
     {
-        path: 'play',
+        path: '/play',
         element: <Play />
     }
 ])
