@@ -31,7 +31,7 @@ export default function Settings () {
         setChanges({
             timeLimit: 0,
             health: 0,
-            difficulty: state.difficulty
+            difficulty: changes.difficulty
         })
     }
 
