@@ -1,9 +1,11 @@
 import { configureStore } from "@reduxjs/toolkit";
+import gameDataSlicer from "./slicers/gameDataSlicer";
 import settingsSlicer from "./slicers/settingsSlicer";
 
 export const store = configureStore({
     reducer: {
-        settings: settingsSlicer
+        settings: settingsSlicer,
+        gameData: gameDataSlicer
     }
 })
 
