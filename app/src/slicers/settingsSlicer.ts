@@ -10,6 +10,12 @@ interface Settings {
     maxHealth: number,
 }
 
+interface Changes {
+    timeLimit: number;
+    health: number;
+    difficulty: Difficulty;
+}
+
 const initialState: Settings = {
     timeLimit: 0,
     maxTimeLimit: 10,
@@ -22,11 +28,13 @@ const settingsSlicer = createSlice({
     name: 'settings',
     initialState,
     reducers: {
-        incTimeLimit(state, action: PayloadAction<number>) {
-            state.timeLimit += action.payload
+        updateSettings(state, action: PayloadAction<Changes>) {
+            state.timeLimit += action.payload.timeLimit
+            state.health += action.payload.health
+            state.difficulty = action.payload.difficulty
         },
     }
 })
 
 export default settingsSlicer.reducer
-export const { incTimeLimit } = settingsSlicer.actions
+export const { updateSettings } = settingsSlicer.actions

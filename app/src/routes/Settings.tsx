@@ -1,17 +1,16 @@
 import { FaMinus, FaPlus } from "react-icons/fa6";
+import { useAppDispatch, useAppSelector } from "../hooks/useReduxHooks"
+import { useEffect, useState } from "react"
 
 import { Link } from "react-router-dom"
 import back from "../assets/images/icon-back.svg"
-import { useAppSelector } from "../hooks/useReduxHooks"
-import { useState } from "react"
-
-// import { incTimeLimit } from "../slicers/settingsSlicer"
-
+import { updateSettings } from "../slicers/settingsSlicer"
 
 export default function Settings () {
 
-    // const dispatch = useAppDispatch()
+    const dispatch = useAppDispatch()
     const state = useAppSelector(state => state.settings)
+    const [isUpdated, setIsUpdated] = useState(false);
 
     const [changes, setChanges] = useState({
         timeLimit: 0,
@@ -19,8 +18,29 @@ export default function Settings () {
         difficulty: state.difficulty
     })
 
+    useEffect(() => {
+        if(changes.difficulty === state.difficulty && changes.health === 0 && changes.timeLimit === 0)
+            setIsUpdated(false)
+        else
+            setIsUpdated(true)
+    }, [changes])
+
     const handleSaveChanges = () => {
         console.log(changes);
+        dispatch(updateSettings(changes))
+        setChanges({
+            timeLimit: 0,
+            health: 0,
+            difficulty: state.difficulty
+        })
+    }
+
+    const handleReset = () => {
+        setChanges({
+            timeLimit: 0 - state.timeLimit,
+            health: 8 - state.health ,
+            difficulty: 'Normal'
+        })
     }
 
     const handleDecrementTimeLimit = () => {
@@ -51,9 +71,16 @@ export default function Settings () {
                 </Link>
                 <button
                     onClick={handleSaveChanges}
-                    className={`bg-blue-700 hover:bg-blue-800 py-2 w-60 border-b-2 border-blue-400 hover:border-blue-600 tracking-wide rounded-full text-white text-4xl font-bold select-none text-center`}
+                    disabled={!isUpdated}
+                    className={`${!isUpdated ? 'bg-gray-600' : 'bg-blue-700 hover:bg-blue-800 border-blue-400 hover:border-blue-600'} border-b-2 py-2 w-60 tracking-wide rounded-full text-white text-4xl font-bold select-none text-center`}
                 >
                     SAVE CHANGES
+                </button>
+                <button
+                    onClick={handleReset}
+                    className={`bg-blue-700 hover:bg-blue-800 py-2 w-32 border-b-2 border-blue-400 hover:border-blue-600 tracking-wide rounded-full text-white text-4xl font-bold select-none text-center`}
+                >
+                    RESET
                 </button>
             </div>
             <h1 className="text-blue-200 select-none text-9xl">
@@ -123,9 +150,6 @@ export default function Settings () {
                     >
                         <FaPlus className="text-4xl"/>
                     </button>
-                </div>
-                <div className="text-2xl opacity-70 text-violet-950">
-                    ❤️
                 </div>
             </div>
         </section>
