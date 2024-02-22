@@ -24,7 +24,7 @@ export default function Menu () {
                             Time Limit:
                         </div>
                         <div className="text-blue-700">
-                            {state.timeLimit === 0 ? 'None' : state.timeLimit}
+                            {state.timeLimit === 0 ? 'None' : state.timeLimit + ' mins'}
                         </div>
                     </div>
                     <div className="flex justify-between text-5xl">
