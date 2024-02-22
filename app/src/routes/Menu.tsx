@@ -1,11 +1,26 @@
+import { Link, useNavigate } from "react-router-dom"
+import { setInitialGameData, setSettings } from "../slicers/gameDataSlicer"
+import { useAppDispatch, useAppSelector } from "../hooks/useReduxHooks"
+
 import Button from "../components/Button"
-import { Link } from "react-router-dom"
 import back from "../assets/images/icon-back.svg"
-import { useAppSelector } from "../hooks/useReduxHooks"
 
 export default function Menu () {
+    const navigate = useNavigate()
     const categories: string[] = ['Movies', 'Countries', 'Animals', 'Foods', 'Sports', 'Technology']
     const state = useAppSelector(state => state.settings)
+    const dispatch = useAppDispatch()
+
+    const handleStartGame = (category: string) => {
+        const generatedWord = 'sammple'
+        dispatch(
+            setSettings({difficulty: state.difficulty, timeLimit: state.timeLimit, health: state.health})
+        )
+        dispatch(
+            setInitialGameData({word: generatedWord, category})
+        )
+        navigate('/play', {replace: true})
+    }
 
     return(<main className="flex flex-col min-h-screen bg-center bg-no-repeat bg-cover bg-bg-desktop">
         <section className="flex items-center justify-between p-10">
@@ -54,7 +69,7 @@ export default function Menu () {
             <div className="grid w-2/3 grid-cols-3 gap-5 p-5 ">
                 {
                     categories.map((category, i) =>
-                    <button key={i} className="text-6xl tracking-wide text-white bg-blue-700 border-t-2 border-b-8 border-blue-950 border-x-2 hover:border-blue-200 rounded-2xl hover:bg-blue-800">
+                    <button onClick={()=>handleStartGame(category)} key={i} className="text-6xl tracking-wide text-white bg-blue-700 border-t-2 border-b-8 border-blue-950 border-x-2 hover:border-blue-200 rounded-2xl hover:bg-blue-800">
                         {category}
                     </button>)
                 }
