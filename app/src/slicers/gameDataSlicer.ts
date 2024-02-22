@@ -3,6 +3,11 @@ import { PayloadAction, createSlice } from "@reduxjs/toolkit";
 type Status = 'Inactive' | 'Active'
 type Difficulty = 'Easy' | 'Normal' | 'Hard'
 
+interface InitialGameData {
+    category: string,
+    word: string
+}
+
 interface GameData {
     status: Status,
     category: string,
@@ -51,8 +56,13 @@ const gameDataSlicer = createSlice({
             state.health.maxHealth = action.payload.health
             state.difficulty = action.payload.difficulty
         },
+        setInitialGameData(state, action: PayloadAction<InitialGameData>) {
+            state.status = 'Active'
+            state.word.selectedWord = action.payload.word
+            state.word.requiredLetters = [...new Set(action.payload.word.split(''))]
+        }
     }
 })
 
 export default gameDataSlicer.reducer
-export const { setSettings } = gameDataSlicer.actions
+export const { setSettings, setInitialGameData } = gameDataSlicer.actions
