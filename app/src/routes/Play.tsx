@@ -1,9 +1,9 @@
-import { Navigate, useNavigate } from "react-router-dom"
 import { useAppDispatch, useAppSelector } from "../hooks/useReduxHooks";
 import { useEffect, useState } from "react";
 
 import { FaHeart } from "react-icons/fa";
 import { MenuBar } from "../components/MenuBar";
+import { Navigate } from "react-router-dom"
 import ProgressBar from "@ramonak/react-progress-bar";
 import { loadGameData } from "../slicers/gameDataSlicer";
 import menu from "../assets/images/icon-menu.svg"
