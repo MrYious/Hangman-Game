@@ -12,6 +12,7 @@ export default function Menu () {
     const dispatch = useAppDispatch()
 
     const handleStartGame = (category: string) => {
+        // Generate a random word based on category
         const generatedWord = 'sammple'
         dispatch(
             setSettings({difficulty: state.difficulty, timeLimit: state.timeLimit, health: state.health})
