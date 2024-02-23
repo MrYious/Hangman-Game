@@ -1,22 +1,23 @@
 import { FaMinus, FaPlus } from "react-icons/fa6";
+import { resetSettings, updateSettings } from "../slicers/settingsSlicer"
 import { useAppDispatch, useAppSelector } from "../hooks/useReduxHooks"
 import { useEffect, useState } from "react"
 
 import { Link } from "react-router-dom"
 import back from "../assets/images/icon-back.svg"
-import { updateSettings } from "../slicers/settingsSlicer"
 
 export default function Settings () {
 
     const dispatch = useAppDispatch()
-    const state = useAppSelector(state => state.settings)
-    const [isUpdated, setIsUpdated] = useState(false);
 
-    const [changes, setChanges] = useState({
+    const state = useAppSelector(state => state.settings)
+    const initialChanges = {
         timeLimit: 0,
         health: 0,
         difficulty: state.difficulty
-    })
+    }
+    const [isUpdated, setIsUpdated] = useState(false);
+    const [changes, setChanges] = useState(initialChanges)
 
     useEffect(() => {
         if(changes.difficulty === state.difficulty && changes.health === 0 && changes.timeLimit === 0)
@@ -28,19 +29,12 @@ export default function Settings () {
     const handleSaveChanges = () => {
         console.log(changes);
         dispatch(updateSettings(changes))
-        setChanges({
-            timeLimit: 0,
-            health: 0,
-            difficulty: changes.difficulty
-        })
+        setChanges({...initialChanges, difficulty: changes.difficulty})
     }
 
     const handleReset = () => {
-        setChanges({
-            timeLimit: 0 - state.timeLimit,
-            health: 8 - state.health ,
-            difficulty: 'Normal'
-        })
+        dispatch(resetSettings())
+        setChanges({...initialChanges, difficulty: 'Normal'})
     }
 
     const handleDecrementTimeLimit = () => {
