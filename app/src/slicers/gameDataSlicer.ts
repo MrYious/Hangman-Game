@@ -62,9 +62,12 @@ const gameDataSlicer = createSlice({
             state.word.requiredLetters = [...new Set(action.payload.word.split(''))]
             state.category = action.payload.category
         },
-        loadGameData: (state, action: PayloadAction<GameData>) => action.payload
+        loadGameData: (state, action: PayloadAction<GameData>) => action.payload,
+        stopGame: (state) => {
+            state.status = 'Inactive'
+        }
     }
 })
 
 export default gameDataSlicer.reducer
-export const { setSettings, setInitialGameData, loadGameData } = gameDataSlicer.actions
+export const { setSettings, setInitialGameData, loadGameData, stopGame } = gameDataSlicer.actions
