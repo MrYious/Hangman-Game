@@ -2,6 +2,7 @@ import { useAppDispatch, useAppSelector } from "../hooks/useReduxHooks";
 import { useEffect, useState } from "react";
 
 import { FaHeart } from "react-icons/fa";
+import { Keyboard } from "../components/Keyboard";
 import { MenuBar } from "../components/MenuBar";
 import { Navigate } from "react-router-dom"
 import ProgressBar from "@ramonak/react-progress-bar";
@@ -41,7 +42,7 @@ export default function Play () {
         setIsMenu(false)
     }
 
-    return(<main className="flex flex-col min-h-screen bg-center bg-no-repeat bg-cover bg-bg-desktop">
+    return(<main className="flex flex-col justify-between min-h-screen bg-center bg-no-repeat bg-cover bg-bg-desktop">
         {
             isMenu &&
             <MenuBar handleCloseMenu={handleCloseMenu} />
@@ -57,6 +58,12 @@ export default function Play () {
                 <ProgressBar completed={33} maxCompleted={100} className="bg-white border-8 border-white rounded-full select-none w-60" baseBgColor="#d1d5db" bgColor="#dc2626" customLabel=" " />
                 <FaHeart className="text-6xl text-pink-700"/>
             </div>
+        </section>
+        <section className="flex items-center justify-center border-2 border-black">
+            
+        </section>
+        <section className="p-8 border-2 border-black">
+            <Keyboard />
         </section>
     </main>)
 }
