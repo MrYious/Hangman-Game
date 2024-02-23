@@ -21,7 +21,7 @@ export default function Settings () {
     useEffect(() => {
         if(changes.difficulty === state.difficulty && changes.health === 0 && changes.timeLimit === 0)
             setIsUpdated(false)
-        else
+        else if (!isUpdated)
             setIsUpdated(true)
     }, [changes])
 
