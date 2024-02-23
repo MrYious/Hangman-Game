@@ -1,14 +1,20 @@
+import { stopGame } from "../slicers/gameDataSlicer"
+import { useAppDispatch } from "../hooks/useReduxHooks"
 import { useNavigate } from "react-router-dom"
 
 export const MenuBar = (props: {handleCloseMenu: () => void}) => {
-
+    const dispatch = useAppDispatch()
     const navigate = useNavigate()
 
     const handleNewGame = () => {
+        dispatch(stopGame())
+        sessionStorage.removeItem('gameData')
         navigate('/menu', {replace: true})
     }
 
     const handleQuitGame = () => {
+        dispatch(stopGame())
+        sessionStorage.removeItem('gameData')
         navigate('/', {replace: true})
     }
 
