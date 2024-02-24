@@ -24,7 +24,7 @@ export const Keyboard = () => {
                 key={i}
                 onClick={()=>{handleAttempt(letter)}}
                 disabled={state.attemptedLetters.includes(letter) || state.correctLetters.includes(letter) }
-                className={` ${state.correctLetters.includes(letter) ? ' bg-green-700  opacity-80' : state.attemptedLetters.includes(letter) ? ' bg-gray-200 opacity-30' : 'bg-gray-200 hover:bg-blue-700 hover:text-white hover:shadow-violet-950 ' }
+                className={` ${state.correctLetters.includes(letter) ? ' bg-green-700 text-white  opacity-80' : state.attemptedLetters.includes(letter) ? ' bg-gray-200 opacity-30' : 'bg-gray-200 hover:bg-blue-700 hover:text-white hover:shadow-violet-950 ' }
                 flex items-center justify-center w-1/12 py-4 text-5xl shadow-sm rounded-3xl text-violet-950`}
             >
                 {letter}
