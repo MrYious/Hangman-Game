@@ -7,6 +7,7 @@ import { Keyboard } from "../components/Keyboard";
 import { MenuBar } from "../components/MenuBar";
 import { Navigate } from "react-router-dom"
 import ProgressBar from "@ramonak/react-progress-bar";
+import { Result } from "../components/Result";
 import { loadGameData } from "../slicers/gameDataSlicer";
 import menu from "../assets/images/icon-menu.svg"
 
@@ -15,6 +16,8 @@ export default function Play () {
 
     const dispatch = useAppDispatch()
     const state = useAppSelector(state => state.gameData)
+    type Result = 'None' | 'Win' | 'Lose'
+    const [result, setResult] = useState<Result>('None')
 
     const sessionData = sessionStorage.getItem('gameData')
 
@@ -38,9 +41,9 @@ export default function Play () {
         console.log('Changes in State');
         console.log(state);
         if (state.health.currentHealth === 0) {
-            alert('You lose!')
+            setResult('Lose')
         } else if (state.word.requiredLetters.length === 0 && state.status === 'Active') {
-            alert('You win!')
+            setResult('Win')
         }
     }, [state])
 
@@ -57,6 +60,10 @@ export default function Play () {
         {
             isMenu &&
             <MenuBar handleCloseMenu={handleCloseMenu} />
+        }
+        {
+            result !== 'None' &&
+            <Result result={result} />
         }
         <section className="flex items-center gap-10 px-10 py-5 border-2 border-black">
             <button onClick={handleOpenMenu} className="p-5 border-b-2 rounded-full select-none border-violet-700 bg-violet-600 hover:bg-violet-800">
