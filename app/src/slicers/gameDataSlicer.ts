@@ -19,8 +19,9 @@ interface GameData {
     timeLimit: number,
     word: {
         selectedWord: string,
-        guessedLetters: string[],
-        requiredLetters: string[]
+        correctLetters: string[]
+        requiredLetters: string[],
+        attemptedLetters: string[],
     }
 }
 
@@ -41,8 +42,9 @@ const initialState: GameData = {
     timeLimit: 0,
     word: {
         selectedWord: '',
-        guessedLetters: [],
-        requiredLetters: []
+        correctLetters: [],
+        requiredLetters: [],
+        attemptedLetters: [],
     }
 }
 
@@ -63,11 +65,17 @@ const gameDataSlicer = createSlice({
             state.category = action.payload.category
         },
         loadGameData: (_state, action: PayloadAction<GameData>) => action.payload,
-        stopGame: (state) => {
-            state.status = 'Inactive'
-        }
+        correctGuess: (state, action: PayloadAction<string>) => {
+            state.word.correctLetters.push(action.payload)
+            state.word.requiredLetters = state.word.requiredLetters.filter(letter => letter !== action.payload)
+        },
+        incorrectGuess: (state, action: PayloadAction<string>) => {
+            state.word.attemptedLetters.push(action.payload)
+            state.health.currentHealth -= 1
+        },
+        stopGame: () => initialState
     }
 })
 
 export default gameDataSlicer.reducer
-export const { setSettings, setInitialGameData, loadGameData, stopGame } = gameDataSlicer.actions
+export const { setSettings, setInitialGameData, loadGameData, correctGuess, incorrectGuess, stopGame } = gameDataSlicer.actions
