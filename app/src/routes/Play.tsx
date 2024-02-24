@@ -1,6 +1,7 @@
 import { useAppDispatch, useAppSelector } from "../hooks/useReduxHooks";
 import { useEffect, useState } from "react";
 
+import { DisplayWord } from "../components/DisplayWord";
 import { FaHeart } from "react-icons/fa";
 import { Keyboard } from "../components/Keyboard";
 import { MenuBar } from "../components/MenuBar";
@@ -38,7 +39,7 @@ export default function Play () {
         console.log(state);
         if (state.health.currentHealth === 0) {
             alert('You lose!')
-        } else if (!state.word.requiredLetters.length) {
+        } else if (state.word.requiredLetters.length === 0 && state.status === 'Active') {
             alert('You win!')
         }
     }, [state])
@@ -69,8 +70,8 @@ export default function Play () {
                 <FaHeart className="text-6xl text-pink-500"/>
             </div>
         </section>
-        <section className="flex items-center justify-center border-2 border-black">
-            
+        <section className="flex flex-wrap items-center justify-center gap-5 py-10 border-2 border-black grow">
+            <DisplayWord />
         </section>
         <section className="p-8 border-2 border-black">
             <Keyboard />
