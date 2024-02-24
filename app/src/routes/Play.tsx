@@ -45,6 +45,7 @@ export default function Play () {
         } else if (state.word.requiredLetters.length === 0 && state.status === 'Active') {
             setResult('Win')
         }
+        sessionStorage.setItem('gameData', JSON.stringify(state))
     }, [state])
 
     const [isMenu, setIsMenu] = useState(false)
