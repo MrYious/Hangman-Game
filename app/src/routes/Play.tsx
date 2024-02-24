@@ -33,6 +33,16 @@ export default function Play () {
         }
     }, [])
 
+    useEffect(() => {
+        console.log('Changes in State');
+        console.log(state);
+        if (state.health.currentHealth === 0) {
+            alert('You lose!')
+        } else if (!state.word.requiredLetters.length) {
+            alert('You win!')
+        }
+    }, [state])
+
     const [isMenu, setIsMenu] = useState(false)
 
     const handleOpenMenu = () => {
@@ -55,8 +65,8 @@ export default function Play () {
                 {state.category}
             </h1>
             <div className="flex items-center gap-5">
-                <ProgressBar completed={33} maxCompleted={100} className="bg-white border-8 border-white rounded-full select-none w-60" baseBgColor="#d1d5db" bgColor="#dc2626" customLabel=" " />
-                <FaHeart className="text-6xl text-pink-700"/>
+                <ProgressBar completed={state.health.currentHealth} maxCompleted={state.health.maxHealth} className="bg-white border-8 border-white rounded-full select-none w-60" baseBgColor="#d1d5db" bgColor="#dc2626" customLabel=" " />
+                <FaHeart className="text-6xl text-pink-500"/>
             </div>
         </section>
         <section className="flex items-center justify-center border-2 border-black">
