@@ -47,8 +47,10 @@ export default function Play () {
         console.log(state);
         if (state.health.currentHealth === 0) {
             setResult('Lose')
+            pause()
         } else if (state.word.requiredLetters.length === 0 && state.status === 'Active') {
             setResult('Win')
+            pause()
         }
     }, [state])
 

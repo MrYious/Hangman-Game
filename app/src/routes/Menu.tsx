@@ -11,14 +11,15 @@ export default function Menu () {
     const state = useAppSelector(state => state.settings)
     const dispatch = useAppDispatch()
 
+
     const handleStartGame = (category: string) => {
         // Generate a random word based on category
-        const generatedWord = 'SAMMPLE'
+        const generatedWord = 'artificial intelligence'
         dispatch(
             setSettings({difficulty: state.difficulty, timeLimit: state.timeLimit, health: state.health})
         )
         dispatch(
-            setInitialGameData({word: generatedWord, category})
+            setInitialGameData({word: generatedWord.toUpperCase(), category})
         )
         navigate('/play', {replace: true})
     }

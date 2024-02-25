@@ -61,7 +61,7 @@ const gameDataSlicer = createSlice({
         setInitialGameData: (state, action: PayloadAction<InitialGameData>) => {
             state.status = 'Active'
             state.word.selectedWord = action.payload.word
-            state.word.requiredLetters = [...new Set(action.payload.word.split(''))]
+            state.word.requiredLetters = [...new Set(action.payload.word.replace(' ', '').split(''))]
             state.category = action.payload.category
         },
         correctGuess: (state, action: PayloadAction<string>) => {
