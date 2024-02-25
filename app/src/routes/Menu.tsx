@@ -4,6 +4,7 @@ import { useAppDispatch, useAppSelector } from "../hooks/useReduxHooks"
 
 import Button from "../components/Button"
 import back from "../assets/images/icon-back.svg"
+import data from '../data/data.json'
 
 export default function Menu () {
     const navigate = useNavigate()
@@ -14,12 +15,15 @@ export default function Menu () {
 
     const handleStartGame = (category: string) => {
         // Generate a random word based on category
-        const generatedWord = 'artificial intelligence'
+
+        const list = data[state.difficulty].filter(word => word.category === category )
+        const randomWord = list[Math.floor(Math.random() * list.length)].word
+
         dispatch(
             setSettings({difficulty: state.difficulty, timeLimit: state.timeLimit, health: state.health})
         )
         dispatch(
-            setInitialGameData({word: generatedWord.toUpperCase(), category})
+            setInitialGameData({word: randomWord.toUpperCase(), category})
         )
         navigate('/play', {replace: true})
     }
