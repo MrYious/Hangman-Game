@@ -26,8 +26,11 @@ export default function Settings () {
             setIsUpdated(true)
     }, [changes])
 
+    useEffect(() => {
+        sessionStorage.setItem('settingsData', JSON.stringify(state))
+    }, [state])
+
     const handleSaveChanges = () => {
-        console.log(changes);
         dispatch(updateSettings(changes))
         setChanges({...initialChanges, difficulty: changes.difficulty})
     }

@@ -33,9 +33,10 @@ const settingsSlicer = createSlice({
             state.health += action.payload.health
             state.difficulty = action.payload.difficulty
         },
+        loadSettings: (_state, action: PayloadAction<Settings>) => action.payload,
         resetSettings: () => initialState
     }
 })
 
 export default settingsSlicer.reducer
-export const { updateSettings, resetSettings } = settingsSlicer.actions
+export const { updateSettings, resetSettings, loadSettings } = settingsSlicer.actions

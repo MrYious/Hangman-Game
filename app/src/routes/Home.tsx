@@ -1,8 +1,20 @@
 import { Link } from 'react-router-dom'
+import { loadSettings } from '../slicers/settingsSlicer'
 import logo from '../assets/images/logo.svg'
 import play from '../assets/images/icon-play.svg'
+import { useAppDispatch } from '../hooks/useReduxHooks'
+import { useEffect } from 'react'
 
 export default function Home () {
+    const dispatch = useAppDispatch()
+
+    useEffect(() => {
+        const settingsData = sessionStorage.getItem('settingsData')
+        if (settingsData) {
+            dispatch(loadSettings(JSON.parse(settingsData)))
+        }
+    }, [])
+
     return (
         <main className="flex items-center justify-center min-h-screen bg-center bg-no-repeat bg-cover bg-bg-desktop ">
             {/* Menu */}
