@@ -18,7 +18,7 @@ export const MenuBar = (props: {handleCloseMenu: () => void}) => {
         navigate('/', {replace: true})
     }
 
-    return(<section className="absolute z-10 flex items-center justify-center w-full min-h-screen bg-gray-900 bg-opacity-50 ">
+    return(<section className="fixed top-0 z-10 flex items-center justify-center w-full min-h-screen bg-gray-900 bg-opacity-50 ">
         <div className="relative flex flex-col items-center justify-center w-1/3 gap-5 py-10 bg-blue-700 border-t-8 border-blue-500 select-none bg-opacity-80 border-x-4 rounded-3xl">
             <div className="text-white text-7xl">
                 Paused
