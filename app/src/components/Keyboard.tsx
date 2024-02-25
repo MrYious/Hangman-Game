@@ -4,7 +4,6 @@ import { useAppDispatch, useAppSelector } from "../hooks/useReduxHooks"
 export const Keyboard = () => {
     const dispatch = useAppDispatch()
     const state = useAppSelector(state => state.gameData.word)
-    console.log(state);
     const letters = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z']
 
     const handleAttempt = (letter: string) => {
