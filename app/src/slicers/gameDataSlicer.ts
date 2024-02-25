@@ -64,7 +64,6 @@ const gameDataSlicer = createSlice({
             state.word.requiredLetters = [...new Set(action.payload.word.split(''))]
             state.category = action.payload.category
         },
-        loadGameData: (_state, action: PayloadAction<GameData>) => action.payload,
         correctGuess: (state, action: PayloadAction<string>) => {
             state.word.correctLetters.push(action.payload)
             state.word.requiredLetters = state.word.requiredLetters.filter(letter => letter !== action.payload)
@@ -78,4 +77,4 @@ const gameDataSlicer = createSlice({
 })
 
 export default gameDataSlicer.reducer
-export const { setSettings, setInitialGameData, loadGameData, correctGuess, incorrectGuess, stopGame } = gameDataSlicer.actions
+export const { setSettings, setInitialGameData, correctGuess, incorrectGuess, stopGame } = gameDataSlicer.actions
